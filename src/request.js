@@ -1,6 +1,11 @@
 async function getWeather(location) {
   try {
-    const requested = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=9Z35HWXREP2DL48JVDJRXP8DK`);
+    const string = capitalizeWords(location);
+    const requested = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${string}?unitGroup=metric&key=9Z35HWXREP2DL48JVDJRXP8DK`);
+    if(!requested.ok) {
+      throw new Error(`Request failed with status ${requested.status}`);
+    }
+
     const data = await requested.json();
     return data;
   }
@@ -18,4 +23,4 @@ function capitalizeWords(string) {
   .join(" ");
 }
 
-export {getWeather, capitalizeWords};
+export {getWeather};

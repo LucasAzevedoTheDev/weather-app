@@ -14,9 +14,10 @@ inputButton.addEventListener("click", async () => {
     try {
       const fetched = await getWeather(value);  
       errorSpan.classList.remove("error"); 
-      console.log(fetched);
+      // console.log(fetched);
       // INSERT RENDER FUNCTION FROM UI HERE
     } catch(error) {
+      console.log(error);
       errorSpan.classList.add("error");
       errorSpan.textContent = "Please enter a valid location.";
     }

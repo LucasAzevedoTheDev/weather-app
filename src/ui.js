@@ -1,5 +1,5 @@
 import "./styles.css";
 
-// function renderWeather(data) {
-
-// }
+function renderWeather(data) {
+  
+}
