@@ -11,3 +11,12 @@ body {
   margin-top: 20px;
 }
 
+span {
+  margin-bottom: 5px;
+  color: white;
+}
+
+.error {
+  color: rgb(255, 5, 5);
+}
+
