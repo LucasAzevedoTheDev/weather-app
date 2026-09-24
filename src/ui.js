@@ -30,6 +30,21 @@ function renderWeather(data) {
   mainContainer.appendChild(locationFeelsLike);
   mainContainer.appendChild(locationTemp);
   mainContainer.appendChild(locationConditions);
+
+  const sideContainer = document.createElement("div");
+  sideContainer.classList.add("side-container");
+  container.appendChild(sideContainer);
+
+  const locationHumidity = document.createElement("p");
+  locationHumidity.classList.add("location-humidity");
+  locationHumidity.textContent = `${data.currentConditions.humidity}%`;
+
+  const locationUV = document.createElement("p");
+  locationUV.classList.add("location-uv");
+  locationUV.textContent = `${data.currentConditions.uvindex}`;
+
+  sideContainer.appendChild(locationHumidity);
+  sideContainer.appendChild(locationUV);
 }
 
 export {input, inputButton, errorSpan, renderWeather};
