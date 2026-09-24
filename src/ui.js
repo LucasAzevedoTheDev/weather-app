@@ -47,4 +47,4 @@ function renderWeather(data) {
   sideContainer.appendChild(locationUV);
 }
 
-export {input, inputButton, errorSpan, renderWeather};
+export { input, inputButton, errorSpan, renderWeather };
