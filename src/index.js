@@ -1,25 +1,15 @@
 import "./styles.css";
 import {getWeather} from "./request.js";
+import {input, inputButton, errorSpan} from "./ui.js";
 
-const input = document.querySelector(".input");
-const inputButton = document.querySelector(".input-button");
-const errorSpan = document.querySelector("span");
-
-inputButton.addEventListener("click", async () => {
+inputButton.addEventListener("click", () => {
   let value = input.value;
-  
   if(!value) {
     errorSpan.classList.add("error");
+    errorSpan.textContent = "Please enter a location.";
   } else {
-    try {
-      const fetched = await getWeather(value);  
-      errorSpan.classList.remove("error"); 
-      // console.log(fetched);
-      // INSERT RENDER FUNCTION FROM UI HERE
-    } catch(error) {
-      console.log(error);
-      errorSpan.classList.add("error");
-      errorSpan.textContent = "Please enter a valid location.";
+        errorSpan.classList.remove("error"); 
+        errorSpan.textContent = "";
+        getWeather(value);
     }
-  }
 });
