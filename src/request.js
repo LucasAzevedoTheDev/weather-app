@@ -25,4 +25,18 @@ function capitalizeWords(string) {
     .join(" ");
 }
 
-export { getWeather };
+function evaluateUV(value) {
+  if (value <= 2) {
+    return "Low";
+  } else if (value >= 3 && value <= 5) {
+    return "Moderate";
+  } else if (value >= 6 && value <= 7) {
+    return "High";
+  } else if (value >= 8 && value <= 10) {
+    return "Very high";
+  } else if (value >= 11) {
+    return "Extreme";
+  }
+}
+
+export { getWeather, evaluateUV };

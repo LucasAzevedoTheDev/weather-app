@@ -1,4 +1,5 @@
 import "./styles.css";
+import {evaluateUV} from "./request.js";
 
 const input = document.querySelector(".input");
 const inputButton = document.querySelector(".input-button");
@@ -43,8 +44,13 @@ function renderWeather(data) {
   locationUV.classList.add("location-uv");
   locationUV.textContent = `${data.currentConditions.uvindex}`;
 
+  const UVMessage = document.createElement("p");
+  UVMessage.classList.add("uv-message");
+  UVMessage.textContent = evaluateUV(data.currentConditions.uvindex);
+
   sideContainer.appendChild(locationHumidity);
   sideContainer.appendChild(locationUV);
+  sideContainer.appendChild(UVMessage);
 }
 
 export { input, inputButton, errorSpan, renderWeather };
