@@ -78,7 +78,7 @@ function renderWeather(data) {
 
     daysDiv.appendChild(tempRange);
     daysDiv.appendChild(dates);
-    container.appendChild(daysDiv);
+    lowerContainer.appendChild(daysDiv);
   }
 }
 

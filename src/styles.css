@@ -24,4 +24,30 @@ span {
   background-color: grey;
   width: 100%;
   height: 90vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+
+.main-container,
+.side-container,
+.lower-container {
+  border: 1px solid green;
+}
+
+.lower-container {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.days-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.days-div p {
+  margin: 4px;
 }
