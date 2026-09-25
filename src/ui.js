@@ -36,27 +36,19 @@ function renderWeather(data) {
   sideContainer.classList.add("side-container");
   container.appendChild(sideContainer);
 
-  const locationHumidity = document.createElement("p");
-  locationHumidity.classList.add("location-humidity");
-  locationHumidity.textContent = `${data.currentConditions.humidity}%`;
-
-  const locationUV = document.createElement("p");
-  locationUV.classList.add("location-uv");
-  locationUV.textContent = `${data.currentConditions.uvindex}`;
-
-  const UVMessage = document.createElement("p");
-  UVMessage.classList.add("uv-message");
-  UVMessage.textContent = evaluateUV(data.currentConditions.uvindex);
-
-  const cloudCover = document.createElement("p");
-  cloudCover.classList.add("cloud-cover");
-  cloudCover.textContent = `${data.currentConditions.cloudcover}%`;
-
-  sideContainer.appendChild(locationHumidity);
-  sideContainer.appendChild(locationUV);
-  sideContainer.appendChild(UVMessage);
-  sideContainer.appendChild(cloudCover);
-
+  sideContainer.innerHTML = `
+    <dl>
+      <dt>Humidity</dt>
+      <dd>${data.currentConditions.humidity}%</dd>
+      <dt>UV Index</dt>
+      <dd>${data.currentConditions.uvindex} (${evaluateUV(data.currentConditions.uvindex)})</dd>
+      <dt>Cloud Cover</dt>
+      <dd>${data.currentConditions.cloudcover}%</dd>
+      <dt>Visibility</dt>
+      <dd>${data.currentConditions.visibility} km</dd>
+    </dl>  
+  `;
+  
   const lowerContainer = document.createElement("div");
   lowerContainer.classList.add("lower-container");
   container.appendChild(lowerContainer);
