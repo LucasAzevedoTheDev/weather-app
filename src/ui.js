@@ -1,5 +1,5 @@
 import "./styles.css";
-import {evaluateUV} from "./request.js";
+import { evaluateUV } from "./request.js";
 
 const input = document.querySelector(".input");
 const inputButton = document.querySelector(".input-button");
@@ -61,6 +61,25 @@ function renderWeather(data) {
   lowerContainer.classList.add("lower-container");
   container.appendChild(lowerContainer);
 
+  for (let i = 0; i < 7; i++) {
+    const daysDiv = document.createElement("div");
+    daysDiv.classList.add("days-div");
+
+    const tempRange = document.createElement("p");
+    tempRange.classList.add("temp-range");
+    tempRange.textContent = `${data.days[i].tempmax}° / ${data.days[i].tempmin}°`;
+
+    const rawDate = data.days[i].datetime;
+    const parsedDate = rawDate.slice(5, 10).replace("-", "/");
+
+    const dates = document.createElement("p");
+    dates.classList.add("dates");
+    dates.textContent = parsedDate;
+
+    daysDiv.appendChild(tempRange);
+    daysDiv.appendChild(dates);
+    container.appendChild(daysDiv);
+  }
 }
 
 export { input, inputButton, errorSpan, renderWeather };
