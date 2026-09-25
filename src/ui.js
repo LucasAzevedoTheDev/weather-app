@@ -56,6 +56,11 @@ function renderWeather(data) {
   sideContainer.appendChild(locationUV);
   sideContainer.appendChild(UVMessage);
   sideContainer.appendChild(cloudCover);
+
+  const lowerContainer = document.createElement("div");
+  lowerContainer.classList.add("lower-container");
+  container.appendChild(lowerContainer);
+
 }
 
 export { input, inputButton, errorSpan, renderWeather };
