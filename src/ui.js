@@ -48,9 +48,14 @@ function renderWeather(data) {
   UVMessage.classList.add("uv-message");
   UVMessage.textContent = evaluateUV(data.currentConditions.uvindex);
 
+  const cloudCover = document.createElement("p");
+  cloudCover.classList.add("cloud-cover");
+  cloudCover.textContent = `${data.currentConditions.cloudcover}%`;
+
   sideContainer.appendChild(locationHumidity);
   sideContainer.appendChild(locationUV);
   sideContainer.appendChild(UVMessage);
+  sideContainer.appendChild(cloudCover);
 }
 
 export { input, inputButton, errorSpan, renderWeather };
