@@ -1,10 +1,15 @@
 import "./styles.css";
 import { evaluateUV } from "./request.js";
+import search from "../photos/icons/search.svg";
 
 const input = document.querySelector(".input");
 const inputButton = document.querySelector(".input-button");
 const errorSpan = document.querySelector("span");
 const container = document.querySelector(".container");
+
+const searchIcon = document.createElement("img");
+searchIcon.src = search;
+inputButton.appendChild(searchIcon);
 
 function renderWeather(data) {
   const mainContainer = document.createElement("div");
@@ -48,7 +53,7 @@ function renderWeather(data) {
       <dd>${data.currentConditions.visibility} km</dd>
     </dl>  
   `;
-  
+
   const lowerContainer = document.createElement("div");
   lowerContainer.classList.add("lower-container");
   container.appendChild(lowerContainer);
