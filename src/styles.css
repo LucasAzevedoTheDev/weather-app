@@ -35,6 +35,14 @@ span {
   padding: 20px;
 }
 
+.weather-icon {
+  width: 250px;
+}
+
+.days-icon {
+  width: 80px;
+}
+
 .lower-container {
   grid-column: span 2;
   display: flex;

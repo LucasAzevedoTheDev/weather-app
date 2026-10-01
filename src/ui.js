@@ -160,6 +160,15 @@ function renderWeather(data) {
     const daysDiv = document.createElement("div");
     daysDiv.classList.add("days-div");
 
+    const daysIcon = document.createElement("img");
+    daysIcon.classList.add("days-icon");
+
+    import(`../photos/conditions/${data.days[i].icon}.svg`).then(
+      (module) => {
+        daysIcon.src = module.default;
+      },
+    );
+
     const tempRange = document.createElement("p");
     tempRange.classList.add("temp-range");
     tempRange.textContent = `${data.days[i].tempmax}° / ${data.days[i].tempmin}°`;
@@ -171,6 +180,7 @@ function renderWeather(data) {
     dates.classList.add("dates");
     dates.textContent = parsedDate;
 
+    daysDiv.appendChild(daysIcon);
     daysDiv.appendChild(tempRange);
     daysDiv.appendChild(dates);
     lowerContainer.appendChild(daysDiv);
