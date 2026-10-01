@@ -44,6 +44,10 @@ function renderWeather(data) {
   const humidityDiv = document.createElement("div");
   humidityDiv.classList.add("side-container-divs");
 
+  const humidityInnerDiv = document.createElement("div");
+  humidityInnerDiv.classList.add("side-container-inner");
+  humidityDiv.appendChild(humidityInnerDiv);
+
   const humidityDivTitle = document.createElement("p");
   humidityDivTitle.classList.add("side-container-titles");
   humidityDivTitle.textContent = "Humidity";
@@ -52,11 +56,15 @@ function renderWeather(data) {
   humidityDivData.classList.add("side-container-data");
   humidityDivData.textContent = data.currentConditions.humidity;
 
-  humidityDiv.appendChild(humidityDivTitle);
-  humidityDiv.appendChild(humidityDivData);
+  humidityInnerDiv.appendChild(humidityDivTitle);
+  humidityInnerDiv.appendChild(humidityDivData);
 
   const UVDiv = document.createElement("div");
   UVDiv.classList.add("side-container-divs");
+
+  const UVInnerDiv = document.createElement("div");
+  UVInnerDiv.classList.add("side-container-inner");
+  UVDiv.appendChild(UVInnerDiv);
 
   const UVDivTitle = document.createElement("p");
   UVDivTitle.classList.add("side-container-divs");
@@ -64,14 +72,18 @@ function renderWeather(data) {
 
   const UVDivData = document.createElement("p");
   UVDivData.classList.add("side-container-data");
-  UVDivData.textContent =`${data.currentConditions.uvindex} (${evaluateUV(data.currentConditions.uvindex)})`;
+  UVDivData.textContent = `${data.currentConditions.uvindex} (${evaluateUV(data.currentConditions.uvindex)})`;
 
-  UVDiv.appendChild(UVDivTitle);
-  UVDiv.appendChild(UVDivData);
+  UVInnerDiv.appendChild(UVDivTitle);
+  UVInnerDiv.appendChild(UVDivData);
 
   const cloudCoverDiv = document.createElement("div");
   cloudCoverDiv.classList.add("side-container-divs");
-  
+
+  const cloudCoverInnerDiv = document.createElement("div");
+  cloudCoverInnerDiv.classList.add("side-container-inner");
+  cloudCoverDiv.appendChild(cloudCoverInnerDiv);
+
   const cloudCoverDivTitle = document.createElement("p");
   cloudCoverDivTitle.classList.add("side-container-titles");
   cloudCoverDivTitle.textContent = "Cloud Cover";
@@ -80,11 +92,15 @@ function renderWeather(data) {
   cloudCoverDivData.classList.add("side-container-data");
   cloudCoverDivData.textContent = data.currentConditions.cloudcover;
 
-  cloudCoverDiv.appendChild(cloudCoverDivTitle);
-  cloudCoverDiv.appendChild(cloudCoverDivData);
+  cloudCoverInnerDiv.appendChild(cloudCoverDivTitle);
+  cloudCoverInnerDiv.appendChild(cloudCoverDivData);
 
   const visibilityDiv = document.createElement("div");
   visibilityDiv.classList.add("side-container-divs");
+
+  const visibilityInnerDiv = document.createElement("div");
+  visibilityInnerDiv.classList.add("side-container-inner");
+  visibilityDiv.appendChild(visibilityInnerDiv);
 
   const visibilityDivTitle = document.createElement("p");
   visibilityDivTitle.classList.add("side-container-titles");
@@ -94,13 +110,13 @@ function renderWeather(data) {
   visibilityDivData.classList.add("side-container-data");
   visibilityDivData.textContent = data.currentConditions.visibility;
 
-  visibilityDiv.appendChild(visibilityDivTitle);
-  visibilityDiv.appendChild(visibilityDivData);
+  visibilityInnerDiv.appendChild(visibilityDivTitle);
+  visibilityInnerDiv.appendChild(visibilityDivData);
 
-  sideContainer.appendChild(humidityDiv)
-  sideContainer.appendChild(UVDiv)
-  sideContainer.appendChild(cloudCoverDiv)
-  sideContainer.appendChild(cloudCoverDiv)
+  sideContainer.appendChild(humidityDiv);
+  sideContainer.appendChild(UVDiv);
+  sideContainer.appendChild(cloudCoverDiv);
+  sideContainer.appendChild(cloudCoverDiv);
 
   const lowerContainer = document.createElement("div");
   lowerContainer.classList.add("lower-container");
