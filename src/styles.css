@@ -51,3 +51,23 @@ span {
 .days-div p {
   margin: 4px;
 }
+
+.side-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.side-container-divs {
+  display: flex;
+  gap: 30px;
+}
+
+.side-container-icons {
+  width: 50px;
+}
+
+.side-container-inner {
+  width: 100px;
+}
