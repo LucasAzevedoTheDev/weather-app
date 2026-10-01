@@ -15,31 +15,6 @@ const searchIcon = document.createElement("img");
 searchIcon.src = search;
 inputButton.appendChild(searchIcon);
 
-const iconComponents = {
-  "clear-day": ClearDayIcon,
-  "clear-night": ClearNightIcon,
-  "cloudy": CloudyIcon,
-  "fog": FogIcon,
-  "hail": hailIcon,
-  "partly-cloudy-day": PartlyCloudyDayIcon,
-  "partly-cloudy-night": PartlyCloudyNightIcon,
-  "rain-snow-showers-day": rainSnowShowersDayIcon,
-  "rain-snow-showers-night": rainSnowShowersNightIcon,
-  "rain-snow": rainSnowIcon,
-  "rain": RainIcon,
-  "showers-day": showersDayIcon,
-  "showers-night": showersNightIcon,
-  "sleet": sleetIcon,
-  "snow-showers-day": snowShowersDayIcon,
-  "snow-showers-night": snowShowersNightIcon,
-  "snow": SnowIcon,
-  "thunder-rain": thunderRainIcon,
-  "thunder-showers-day": thunderShowersDayIcon,
-  "thunder-showers-night": thunderShowersNightIcon,
-  "thunder": thunderIcon,
-  "wind": WindIcon
-};
-
 function renderWeather(data) {
   const mainContainer = document.createElement("div");
   mainContainer.classList.add("main-container");
@@ -49,19 +24,29 @@ function renderWeather(data) {
   locationName.classList.add("location-name");
   locationName.textContent = data.resolvedAddress;
 
-  const locationFeelsLike = document.createElement("p");
-  locationFeelsLike.classList.add("location-feels-like");
-  locationFeelsLike.textContent = `feels like ${data.currentConditions.feelslike}°`;
+  const weatherIcon = document.createElement("img");
+  weatherIcon.classList.add("weather-icon");
+
+  import(`../photos/conditions/${data.currentConditions.icon}.svg`).then(
+    (module) => {
+      weatherIcon.src = module.default;
+    },
+  );
 
   const locationTemp = document.createElement("p");
   locationTemp.classList.add("location-temp");
   locationTemp.textContent = `${data.currentConditions.temp}°`;
+
+  const locationFeelsLike = document.createElement("p");
+  locationFeelsLike.classList.add("location-feels-like");
+  locationFeelsLike.textContent = `feels like ${data.currentConditions.feelslike}°`;
 
   const locationConditions = document.createElement("p");
   locationConditions.classList.add("location-conditions");
   locationConditions.textContent = data.currentConditions.conditions;
 
   mainContainer.appendChild(locationName);
+  mainContainer.appendChild(weatherIcon);
   mainContainer.appendChild(locationTemp);
   mainContainer.appendChild(locationFeelsLike);
   mainContainer.appendChild(locationConditions);
