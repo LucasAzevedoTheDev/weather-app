@@ -16,6 +16,8 @@ searchIcon.src = search;
 inputButton.appendChild(searchIcon);
 
 function renderWeather(data) {
+  container.replaceChildren();
+  
   const mainContainer = document.createElement("div");
   mainContainer.classList.add("main-container");
   container.appendChild(mainContainer);
