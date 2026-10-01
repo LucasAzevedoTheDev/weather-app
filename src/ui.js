@@ -15,6 +15,31 @@ const searchIcon = document.createElement("img");
 searchIcon.src = search;
 inputButton.appendChild(searchIcon);
 
+const iconComponents = {
+  "clear-day": ClearDayIcon,
+  "clear-night": ClearNightIcon,
+  "cloudy": CloudyIcon,
+  "fog": FogIcon,
+  "hail": hailIcon,
+  "partly-cloudy-day": PartlyCloudyDayIcon,
+  "partly-cloudy-night": PartlyCloudyNightIcon,
+  "rain-snow-showers-day": rainSnowShowersDayIcon,
+  "rain-snow-showers-night": rainSnowShowersNightIcon,
+  "rain-snow": rainSnowIcon,
+  "rain": RainIcon,
+  "showers-day": showersDayIcon,
+  "showers-night": showersNightIcon,
+  "sleet": sleetIcon,
+  "snow-showers-day": snowShowersDayIcon,
+  "snow-showers-night": snowShowersNightIcon,
+  "snow": SnowIcon,
+  "thunder-rain": thunderRainIcon,
+  "thunder-showers-day": thunderShowersDayIcon,
+  "thunder-showers-night": thunderShowersNightIcon,
+  "thunder": thunderIcon,
+  "wind": WindIcon
+};
+
 function renderWeather(data) {
   const mainContainer = document.createElement("div");
   mainContainer.classList.add("main-container");
@@ -37,8 +62,8 @@ function renderWeather(data) {
   locationConditions.textContent = data.currentConditions.conditions;
 
   mainContainer.appendChild(locationName);
-  mainContainer.appendChild(locationFeelsLike);
   mainContainer.appendChild(locationTemp);
+  mainContainer.appendChild(locationFeelsLike);
   mainContainer.appendChild(locationConditions);
 
   const sideContainer = document.createElement("div");
