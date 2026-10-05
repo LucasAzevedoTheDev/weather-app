@@ -61,7 +61,7 @@ function renderWeather(data) {
   const weatherIcon = document.createElement("img");
   weatherIcon.classList.add("weather-icon");
 
-  import(`../photos/conditions/${data.currentConditions.icon}.svg`).then(
+  import(`../photos/conditions/color/${data.currentConditions.icon}.svg`).then(
     (module) => {
       weatherIcon.src = module.default;
     },
@@ -197,7 +197,7 @@ function renderWeather(data) {
     const daysIcon = document.createElement("img");
     daysIcon.classList.add("days-icon");
 
-    import(`../photos/conditions/${data.days[i].icon}.svg`).then((module) => {
+    import(`../photos/conditions/color/${data.days[i].icon}.svg`).then((module) => {
       daysIcon.src = module.default;
     });
 
