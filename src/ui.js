@@ -15,6 +15,26 @@ const searchIcon = document.createElement("img");
 searchIcon.src = search;
 inputButton.appendChild(searchIcon);
 
+
+let locationTemp;
+let locationFeelsLike;
+let tempRange;
+
+const metricChanger = document.querySelector("select");
+
+metricChanger.addEventListener("change", () => {
+  const metricValue = metricChanger.value;
+
+  if(metricValue === "C") {
+    // CHANGE TO C
+    console.log("Metric system is in °C!")
+  }
+  else if (metricValue === "F") {
+    // CHANGE TO F
+    console.log("Metric system is in °F!")
+  }
+})
+
 function renderWeather(data) {
   container.replaceChildren();
   
@@ -35,11 +55,11 @@ function renderWeather(data) {
     },
   );
 
-  const locationTemp = document.createElement("p");
+  locationTemp = document.createElement("p");
   locationTemp.classList.add("location-temp");
   locationTemp.textContent = `${data.currentConditions.temp} °C`;
 
-  const locationFeelsLike = document.createElement("p");
+  locationFeelsLike = document.createElement("p");
   locationFeelsLike.classList.add("location-feels-like");
   locationFeelsLike.textContent = `feels like ${data.currentConditions.feelslike} °C`;
 
@@ -171,7 +191,7 @@ function renderWeather(data) {
       },
     );
 
-    const tempRange = document.createElement("p");
+    tempRange = document.createElement("p");
     tempRange.classList.add("temp-range");
     tempRange.textContent = `${data.days[i].tempmax}° / ${data.days[i].tempmin}°`;
 
@@ -188,20 +208,5 @@ function renderWeather(data) {
     lowerContainer.appendChild(daysDiv);
   }
 }
-
-const metricChanger = document.querySelector("select");
-
-metricChanger.addEventListener("change", () => {
-  const metricValue = metricChanger.value;
-
-  if(metricValue === "C") {
-    // CHANGE TO C
-    console.log("Metric system is in °C!")
-  }
-  else if (metricValue === "F") {
-    // CHANGE TO F
-    console.log("Metric system is in °F!")
-  }
-})
 
 export { input, inputButton, errorSpan, renderWeather };
