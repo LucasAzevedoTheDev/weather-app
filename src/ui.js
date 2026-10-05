@@ -189,4 +189,17 @@ function renderWeather(data) {
   }
 }
 
+const metricChanger = document.querySelector("select");
+
+metricChanger.addEventListener("change", () => {
+  const metricValue = metricChanger.value;
+
+  if(metricValue === "C") {
+    // CHANGE TO C
+  }
+  else if (metricValue === "F") {
+    // CHANGE TO F
+  }
+})
+
 export { input, inputButton, errorSpan, renderWeather };
