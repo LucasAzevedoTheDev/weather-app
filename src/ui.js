@@ -80,10 +80,10 @@ function renderWeather(data) {
   locationConditions.textContent = data.currentConditions.conditions;
 
   mainContainer.appendChild(locationName);
+  mainContainer.appendChild(locationConditions);
   mainContainer.appendChild(weatherIcon);
   mainContainer.appendChild(locationTemp);
   mainContainer.appendChild(locationFeelsLike);
-  mainContainer.appendChild(locationConditions);
 
   const sideContainer = document.createElement("div");
   sideContainer.classList.add("side-container");
