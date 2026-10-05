@@ -1,3 +1,11 @@
+:root {
+  --glass: rgba(255, 255, 255, 0.15);
+  --glass-hover: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --sun: #f5e98a;
+  --night: #0e2a47;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -87,36 +95,69 @@ span {
   width: 100px;
 }
 
-#metric {
-  appearance: none;
-  padding: 8px 32px 8px 14px;
+/* Header controls: shared frosted-glass look */
+
+#metric,
+.input,
+.input-button {
+  box-sizing: border-box;
+  height: 2.5rem;
   font: inherit;
   font-size: 1rem;
-  font-weight: 600;
   color: white;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
-      no-repeat right 10px center / 14px,
-    rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
   border-radius: 999px;
   backdrop-filter: blur(8px);
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s;
+  transition: background-color 0.2s;
 }
 
-#metric:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+#metric:hover,
+.input:hover,
+.input-button:hover {
+  background-color: var(--glass-hover);
 }
 
-#metric:focus-visible {
-  outline: 2px solid #f5e98a;
+#metric:focus-visible,
+.input:focus-visible,
+.input-button:focus-visible {
+  outline: 2px solid var(--sun);
   outline-offset: 2px;
 }
 
+#metric {
+  appearance: none;
+  padding: 8px 32px 8px 14px;
+  font-weight: 600;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
 #metric option {
-  color: white;
-  background-color: #0e2a47;
+  background-color: var(--night);
+}
+
+.input {
+  width: 260px;
+  padding: 8px 16px;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-button {
+  width: 2.5rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.input-button img {
+  width: 20px;
+  height: 20px;
 }
