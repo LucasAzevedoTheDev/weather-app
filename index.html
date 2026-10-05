@@ -1,1 +1,26 @@
-<head><script defer src="main.js"></script></head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <div class="header">
+      <span></span>
+      <div class="input-container">
+        <select name="metric" id="metric">
+          <option value="C">°C</option>
+          <option value="F">°F</option>
+        </select>
+        <input
+          type="text"
+          class="input"
+          placeholder="Search for a location..."
+        />
+        <button class="input-button"></button>
+      </div>
+    </div>
+    <div class="container"></div>
+  </body>
+</html>
