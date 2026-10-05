@@ -31,10 +31,10 @@ metricChanger.addEventListener("change", () => {
 
   if(metricValue === "C") {
     // CHANGE TO C
-    locationTemp.textContent = `${weatherData.currentConditions.temp} °C`;
-    locationFeelsLike.textContent = `feels like ${weatherData.currentConditions.feelslike} °C`;
+    locationTemp.textContent = `${Math.round(weatherData.currentConditions.temp)} °C`;
+    locationFeelsLike.textContent = `feels like ${Math.round(weatherData.currentConditions.feelslike)} °C`;
     for(let i = 0; i < 7; i++) {
-      tempRanges[i].textContent = `${weatherData.days[i].tempmax}° / ${weatherData.days[i].tempmin}°`;
+      tempRanges[i].textContent = `${Math.round(weatherData.days[i].tempmax)}° / ${Math.round(weatherData.days[i].tempmin)}°`;
     }
     console.log("Metric system is in °C!")
   }
@@ -72,11 +72,11 @@ function renderWeather(data) {
 
   locationTemp = document.createElement("p");
   locationTemp.classList.add("location-temp");
-  locationTemp.textContent = `${data.currentConditions.temp} °C`;
+  locationTemp.textContent = `${Math.round(data.currentConditions.temp)} °C`;
 
   locationFeelsLike = document.createElement("p");
   locationFeelsLike.classList.add("location-feels-like");
-  locationFeelsLike.textContent = `feels like ${data.currentConditions.feelslike} °C`;
+  locationFeelsLike.textContent = `feels like ${Math.round(data.currentConditions.feelslike)} °C`;
 
   const locationConditions = document.createElement("p");
   locationConditions.classList.add("location-conditions");
@@ -110,7 +110,7 @@ function renderWeather(data) {
 
   const humidityDivData = document.createElement("p");
   humidityDivData.classList.add("side-container-data");
-  humidityDivData.textContent = `${data.currentConditions.humidity}%`;
+  humidityDivData.textContent = `${Math.round(data.currentConditions.humidity)}%`;
 
   humidityInnerDiv.appendChild(humidityDivTitle);
   humidityInnerDiv.appendChild(humidityDivData);
@@ -208,7 +208,7 @@ function renderWeather(data) {
 
     tempRange = document.createElement("p");
     tempRange.classList.add("temp-range");
-    tempRange.textContent = `${data.days[i].tempmax}° / ${data.days[i].tempmin}°`;
+    tempRange.textContent = `${Math.round(data.days[i].tempmax)}° / ${Math.round(data.days[i].tempmin)}°`;
 
     const rawDate = data.days[i].datetime;
     const parsedDate = rawDate.slice(5, 10).replace("-", "/");
