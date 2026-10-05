@@ -14,6 +14,3 @@ inputButton.addEventListener("click", async () => {
     renderWeather(fetched);
   }
 });
-
-
-// IMPLEMENT METRIC SYSTEM CHANGE BUTTON

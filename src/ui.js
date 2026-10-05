@@ -37,11 +37,11 @@ function renderWeather(data) {
 
   const locationTemp = document.createElement("p");
   locationTemp.classList.add("location-temp");
-  locationTemp.textContent = `${data.currentConditions.temp}°`;
+  locationTemp.textContent = `${data.currentConditions.temp} °C`;
 
   const locationFeelsLike = document.createElement("p");
   locationFeelsLike.classList.add("location-feels-like");
-  locationFeelsLike.textContent = `feels like ${data.currentConditions.feelslike}°`;
+  locationFeelsLike.textContent = `feels like ${data.currentConditions.feelslike} °C`;
 
   const locationConditions = document.createElement("p");
   locationConditions.classList.add("location-conditions");
@@ -75,7 +75,7 @@ function renderWeather(data) {
 
   const humidityDivData = document.createElement("p");
   humidityDivData.classList.add("side-container-data");
-  humidityDivData.textContent = data.currentConditions.humidity;
+  humidityDivData.textContent = `${data.currentConditions.humidity}%`;
 
   humidityInnerDiv.appendChild(humidityDivTitle);
   humidityInnerDiv.appendChild(humidityDivData);
@@ -121,7 +121,7 @@ function renderWeather(data) {
 
   const cloudCoverDivData = document.createElement("p");
   cloudCoverDivData.classList.add("side-container-data");
-  cloudCoverDivData.textContent = data.currentConditions.cloudcover;
+  cloudCoverDivData.textContent = `${data.currentConditions.cloudcover}%`;
 
   cloudCoverInnerDiv.appendChild(cloudCoverDivTitle);
   cloudCoverInnerDiv.appendChild(cloudCoverDivData);
@@ -196,9 +196,11 @@ metricChanger.addEventListener("change", () => {
 
   if(metricValue === "C") {
     // CHANGE TO C
+    console.log("Metric system is in °C!")
   }
   else if (metricValue === "F") {
     // CHANGE TO F
+    console.log("Metric system is in °F!")
   }
 })
 
