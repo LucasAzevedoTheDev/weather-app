@@ -15,18 +15,24 @@ const searchIcon = document.createElement("img");
 searchIcon.src = search;
 inputButton.appendChild(searchIcon);
 
-
+let weatherData;
 let locationTemp;
 let locationFeelsLike;
 let tempRange;
 
 const metricChanger = document.querySelector("select");
 
+function convertToFahrenheit(celsius) {
+    return (celsius * 9 / 5) + 32;
+}
 metricChanger.addEventListener("change", () => {
   const metricValue = metricChanger.value;
 
   if(metricValue === "C") {
     // CHANGE TO C
+    locationTemp.textContent = `${weatherData.currentConditions.temp} °C`;
+    locationFeelsLike.textContent = `feels like ${weatherData.currentConditions.feelslike} °C`;
+    tempRange.textContent = `${weatherData.days[i].tempmax}° / ${weatherData.days[i].tempmin}°`;
     console.log("Metric system is in °C!")
   }
   else if (metricValue === "F") {
@@ -36,6 +42,7 @@ metricChanger.addEventListener("change", () => {
 })
 
 function renderWeather(data) {
+  weatherData = data;
   container.replaceChildren();
   
   const mainContainer = document.createElement("div");
