@@ -10,6 +10,7 @@ const input = document.querySelector(".input");
 const inputButton = document.querySelector(".input-button");
 const errorSpan = document.querySelector("span");
 const container = document.querySelector(".container");
+const loading = document.querySelector(".loading");
 
 const searchIcon = document.createElement("img");
 searchIcon.src = search;
@@ -223,4 +224,4 @@ function renderWeather(data) {
   updateUnits();
 }
 
-export { input, inputButton, errorSpan, renderWeather };
+export { input, inputButton, errorSpan, loading, renderWeather };
