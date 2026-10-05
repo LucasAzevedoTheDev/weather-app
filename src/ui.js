@@ -23,20 +23,28 @@ let tempRange;
 const metricChanger = document.querySelector("select");
 
 function convertToFahrenheit(celsius) {
-    return (celsius * 9 / 5) + 32;
+    return Math.round((celsius * 9 / 5) + 32);
 }
 metricChanger.addEventListener("change", () => {
   const metricValue = metricChanger.value;
+  const tempRanges = document.querySelectorAll(".temp-range");
 
   if(metricValue === "C") {
     // CHANGE TO C
     locationTemp.textContent = `${weatherData.currentConditions.temp} °C`;
     locationFeelsLike.textContent = `feels like ${weatherData.currentConditions.feelslike} °C`;
-    tempRange.textContent = `${weatherData.days[i].tempmax}° / ${weatherData.days[i].tempmin}°`;
+    for(let i = 0; i < 7; i++) {
+      tempRanges[i].textContent = `${weatherData.days[i].tempmax}° / ${weatherData.days[i].tempmin}°`;
+    }
     console.log("Metric system is in °C!")
   }
   else if (metricValue === "F") {
     // CHANGE TO F
+    locationTemp.textContent = `${convertToFahrenheit(weatherData.currentConditions.temp)} °F`;
+    locationFeelsLike.textContent = `feels like ${convertToFahrenheit(weatherData.currentConditions.feelslike)} °F`;
+    for(let i = 0; i < 7; i++) {
+      tempRanges[i].textContent = `${convertToFahrenheit(weatherData.days[i].tempmax)}° / ${convertToFahrenheit(weatherData.days[i].tempmin)}°`;
+    }
     console.log("Metric system is in °F!")
   }
 })
