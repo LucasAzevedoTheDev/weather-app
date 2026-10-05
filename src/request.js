@@ -7,7 +7,6 @@ async function getWeather(location) {
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${string}?unitGroup=metric&key=9Z35HWXREP2DL48JVDJRXP8DK`,
     );
     const data = await requested.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

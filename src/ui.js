@@ -23,36 +23,33 @@ let tempRange;
 const metricChanger = document.querySelector("select");
 
 function convertToFahrenheit(celsius) {
-    return Math.round((celsius * 9 / 5) + 32);
+  return Math.round((celsius * 9) / 5 + 32);
 }
 metricChanger.addEventListener("change", () => {
   const metricValue = metricChanger.value;
   const tempRanges = document.querySelectorAll(".temp-range");
 
-  if(metricValue === "C") {
-    // CHANGE TO C
+  if (metricValue === "C") {
     locationTemp.textContent = `${Math.round(weatherData.currentConditions.temp)} °C`;
     locationFeelsLike.textContent = `feels like ${Math.round(weatherData.currentConditions.feelslike)} °C`;
-    for(let i = 0; i < 7; i++) {
-      tempRanges[i].textContent = `${Math.round(weatherData.days[i].tempmax)}° / ${Math.round(weatherData.days[i].tempmin)}°`;
+    for (let i = 0; i < 7; i++) {
+      tempRanges[i].textContent =
+        `${Math.round(weatherData.days[i].tempmax)}° / ${Math.round(weatherData.days[i].tempmin)}°`;
     }
-    console.log("Metric system is in °C!")
-  }
-  else if (metricValue === "F") {
-    // CHANGE TO F
+  } else if (metricValue === "F") {
     locationTemp.textContent = `${convertToFahrenheit(weatherData.currentConditions.temp)} °F`;
     locationFeelsLike.textContent = `feels like ${convertToFahrenheit(weatherData.currentConditions.feelslike)} °F`;
-    for(let i = 0; i < 7; i++) {
-      tempRanges[i].textContent = `${convertToFahrenheit(weatherData.days[i].tempmax)}° / ${convertToFahrenheit(weatherData.days[i].tempmin)}°`;
+    for (let i = 0; i < 7; i++) {
+      tempRanges[i].textContent =
+        `${convertToFahrenheit(weatherData.days[i].tempmax)}° / ${convertToFahrenheit(weatherData.days[i].tempmin)}°`;
     }
-    console.log("Metric system is in °F!")
   }
-})
+});
 
 function renderWeather(data) {
   weatherData = data;
   container.replaceChildren();
-  
+
   const mainContainer = document.createElement("div");
   mainContainer.classList.add("main-container");
   container.appendChild(mainContainer);
@@ -200,11 +197,9 @@ function renderWeather(data) {
     const daysIcon = document.createElement("img");
     daysIcon.classList.add("days-icon");
 
-    import(`../photos/conditions/${data.days[i].icon}.svg`).then(
-      (module) => {
-        daysIcon.src = module.default;
-      },
-    );
+    import(`../photos/conditions/${data.days[i].icon}.svg`).then((module) => {
+      daysIcon.src = module.default;
+    });
 
     tempRange = document.createElement("p");
     tempRange.classList.add("temp-range");
