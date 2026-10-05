@@ -25,7 +25,7 @@ const metricChanger = document.querySelector("select");
 function convertToFahrenheit(celsius) {
   return Math.round((celsius * 9) / 5 + 32);
 }
-metricChanger.addEventListener("change", () => {
+function updateUnits() {
   const metricValue = metricChanger.value;
   const tempRanges = document.querySelectorAll(".temp-range");
 
@@ -44,7 +44,9 @@ metricChanger.addEventListener("change", () => {
         `${convertToFahrenheit(weatherData.days[i].tempmax)}° / ${convertToFahrenheit(weatherData.days[i].tempmin)}°`;
     }
   }
-});
+}
+
+metricChanger.addEventListener("change", updateUnits);
 
 function renderWeather(data) {
   weatherData = data;
@@ -56,7 +58,7 @@ function renderWeather(data) {
 
   const locationName = document.createElement("p");
   locationName.classList.add("location-name");
-  locationName.textContent = data.resolvedAddress;
+  locationName.textContent = data.resolvedAddress.split(",")[0];
 
   const weatherIcon = document.createElement("img");
   weatherIcon.classList.add("weather-icon");
@@ -217,6 +219,8 @@ function renderWeather(data) {
     daysDiv.appendChild(dates);
     lowerContainer.appendChild(daysDiv);
   }
+
+  updateUnits();
 }
 
 export { input, inputButton, errorSpan, renderWeather };
