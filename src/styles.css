@@ -137,45 +137,101 @@ body {
   backdrop-filter: blur(8px);
 }
 
-.days-icon {
-  width: 80px;
-}
+/* Lower container: 7-day forecast strip */
 
 .lower-container {
   grid-column: span 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-self: center;
+  align-self: end;
+  box-sizing: border-box;
+  width: min(1100px, 100% - 40px);
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 0;
 }
 
 .days-div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+  padding: 18px 8px;
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(14, 42, 71, 0.25);
+  text-shadow: 0 2px 12px rgba(14, 42, 71, 0.45);
 }
 
 .days-div p {
-  margin: 4px;
+  margin: 0;
 }
+
+.dates {
+  order: -1;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.days-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(14, 42, 71, 0.45));
+}
+
+.temp-range {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Side container: weather details as glass tiles */
 
 .side-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  justify-self: center;
+  align-self: start;
+  box-sizing: border-box;
+  width: min(420px, 100%);
+  margin-top: 20px;
 }
 
-.side-container-divs {
+.side-container > .side-container-divs {
   display: flex;
-  gap: 30px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(14, 42, 71, 0.25);
+  text-shadow: 0 2px 12px rgba(14, 42, 71, 0.45);
 }
 
 .side-container-icons {
-  width: 50px;
+  width: 36px;
+  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(14, 42, 71, 0.45));
 }
 
-.side-container-inner {
-  width: 100px;
+.side-container-inner p {
+  margin: 0;
+}
+
+.side-container-inner p:first-child {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.side-container-inner p:last-child {
+  margin-top: 4px;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 #metric,

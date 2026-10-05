@@ -176,7 +176,7 @@ function renderWeather(data) {
 
   const visibilityDivData = document.createElement("p");
   visibilityDivData.classList.add("side-container-data");
-  visibilityDivData.textContent = `${data.currentConditions.visibility}%`;
+  visibilityDivData.textContent = `${data.currentConditions.visibility} km`;
 
   visibilityInnerDiv.appendChild(visibilityDivTitle);
   visibilityInnerDiv.appendChild(visibilityDivData);
