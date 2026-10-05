@@ -7,10 +7,12 @@ inputButton.addEventListener("click", async () => {
   if (!value) {
     errorSpan.classList.add("error");
     errorSpan.textContent = "Please enter a location.";
+    input.value = "";
   } else {
     errorSpan.classList.remove("error");
     errorSpan.textContent = "";
     const fetched = await getWeather(value);
     renderWeather(fetched);
+    input.value = "";
   }
 });
